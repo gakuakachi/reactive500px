@@ -1,6 +1,6 @@
 /**
 *
-* Footer
+* Content
 *
 */
 
@@ -8,7 +8,7 @@ import React from 'react';
 // import styled from 'styled-components';
 
 
-class Footer extends React.Component { // eslint-disable-line react/prefer-stateless-function
+class Content extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
@@ -17,8 +17,8 @@ class Footer extends React.Component { // eslint-disable-line react/prefer-state
   }
 }
 
-Footer.propTypes = {
+Content.propTypes = {
 
 };
 
-export default Footer;
+export default Content;
