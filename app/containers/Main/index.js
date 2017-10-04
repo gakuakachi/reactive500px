@@ -16,6 +16,10 @@ import makeSelectMain from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
+import Header from 'components/Header';
+import Footer from 'components/Footer';
+import Content from 'components/Content'
+
 
 export class Main extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -30,7 +34,9 @@ export class Main extends React.Component { // eslint-disable-line react/prefer-
   render() {
     return (
       <div>
-        this is Main
+        <Header />
+        <Content />
+        <Footer />
       </div>
     );
   }
