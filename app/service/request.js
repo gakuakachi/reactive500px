@@ -1,5 +1,5 @@
-import * as api from 'service/api';
-import * as config from 'service/config';
+import api from 'service/api';
+import config from 'service/config';
 
 //url endpoint call api promise
 
@@ -14,3 +14,13 @@ export function fetchSpecificImage(photoId) {
 }
 
 //fetch('https://api.500px.com/v1/photos?feature=editors&page=2&consumer_key=CywdSnkEZTICzluldXQlmqJ3UmWqjr9so7iGqBuD').then(function(response){return response.json()});
+
+
+/**
+
+  TODO:
+  - POST oauth/access_token
+  - OAuth Request Token received using the request_token method. R
+  - POST oauth/request_token
+  -
+ */

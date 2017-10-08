@@ -6,9 +6,10 @@
 
 import * as Actions from './constants';
 
-export function fetchImageStart() {
+export function fetchImageStart(params) {
   return {
-    type: Actions.FETCH_IMAGE_START
+    type: Actions.FETCH_IMAGE_START,
+    params
   };
 }
 

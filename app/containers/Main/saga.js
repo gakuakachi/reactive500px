@@ -1,7 +1,7 @@
-import { take, call, put, select } from 'redux-saga/effects';
+import { takeEvery, call, put, select } from 'redux-saga/effects';
 import * as Actions from 'containers/Main/constants';
-
-//import api from service
+import mainRequest from './model';
+import request from 'service/api';
 
 // Actions.FETCH_IMAGE_START
 // Actions.FETCH_IMAGE_SUCCESS
@@ -9,13 +9,14 @@ import * as Actions from 'containers/Main/constants';
 
 function* fetchImages(action) {
   try {
-    //yield const images = call(Api.fetchImages, action.feature)
-    //yield put({type: 'Actions.FETCH_IMAGE_SUCESS', images: images})
+    const images = yield call(request, mainRequest.getFeaturedImages(action.params));
+    console.log(images);
+    yield put({type: Actions.FETCH_IMAGE_SUCCESS, images: images})
   } catch(e) {
-    // yield put({type: 'Actions.FETCH_IMAGE_ERROR', error: e.message})
+    yield put({type: Actions.FETCH_IMAGE_ERROR, error: e.message})
   }
 }
 
 export default function* mainRootSaga() {
-  //yield takeEvery('Actions.FETCH_IMAGE_START', fetchImages)
+  yield takeEvery(Actions.FETCH_IMAGE_START, fetchImages)
 }

@@ -6,63 +6,73 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
+import { fetchImageStart } from './actions';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import makeSelectMain from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
+
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import Content from 'components/Content'
 
+const Wrapper = styled.div`
+  width: 1000px;
+  margin: 0 auto;
+`;
 
 export class Main extends React.Component { // eslint-disable-line react/prefer-stateless-function
-
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-    //fetch action and call api through action creatro and saga
+    //get params
+    const { fetchImageStart } = this.props;
+    const params = 'popular'
+    fetchImageStart(params);
   }
-
   render() {
+    const { isFetching, images, error } = this.props.main;
+    /**
+
+      TODO:
+      - images -> array
+      - Second todo item
+
+     */
     return (
-      <div>
+      <Wrapper>
         <Header />
-        <Content />
+        {isFetching?
+          <p>Loading Now</p>
+          :
+          <Content images={images} />
+        }
         <Footer />
-      </div>
+      </Wrapper>
     );
   }
 }
 
 Main.propTypes = {
-  dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
   main: makeSelectMain(),
 });
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = dispatch => {
   return {
-    dispatch,
+    fetchImageStart: params => dispatch(fetchImageStart(params))
   };
 }
 
-const withConnect = connect(mapStateToProps, mapDispatchToProps);
-
-const withReducer = injectReducer({ key: 'main', reducer });
-const withSaga = injectSaga({ key: 'main', saga });
-
-export default compose(
-  withReducer,
-  withSaga,
-  withConnect,
-)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

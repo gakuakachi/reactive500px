@@ -16,11 +16,11 @@ const initialState = fromJS({
 function mainReducer(state = initialState, action) {
   switch (action.type) {
     case Actions.FETCH_IMAGE_START:
-      return state.set('isFetching', false);
+      return state.set('isFetching', true);
     case Actions.FETCH_IMAGE_SUCCESS:
       return state.merge({
         isFetching: false,
-        images: action.data
+        images: action.images.photos
       });
     case Actions.FETCH_IMAGE_ERROR:
       return state.merge({

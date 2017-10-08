@@ -9,7 +9,6 @@ const selectMainDomain = (state) => state.get('main');
  * Other specific selectors
  */
 
-
 /**
  * Default selector used by Main
  */

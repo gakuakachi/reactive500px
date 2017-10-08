@@ -16,11 +16,10 @@ import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
 import Main from 'containers/Main/Loadable'
+import Upload from 'containers/Upload';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
-
 //iclude layout
-
 export default function App() {
   return (
     <div>
@@ -33,6 +32,7 @@ export default function App() {
         <Route exact path="/featured/fresh-today" component={Main} />
         <Route exact path="/featured/fresh-yesterday" component={Main} />
         <Route exact path="/featured/fresh-thisweek" component={Main} />
+        <Route path="/upload" component={Upload} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
