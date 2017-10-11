@@ -12,10 +12,19 @@ class SignIn extends React.Component { // eslint-disable-line react/prefer-state
     super(props);
   }
 
+  handleClick(e) {
+    const username = this.refs.username
+    const password = this.refs.password
+    const creds = { username: username.value.trim(), password: password.value.trim() }
+    // this.props.onLoginClick(creds)
+    console.log(creds);
+  }
   render() {
     return (
       <div>
-
+        <input type='text' ref='username' placeholder='Username' />
+        <input type='text' ref='username' placeholder='Password' />
+        <button onClick={e => this.handleClick(e)}>Login</button>
       </div>
     );
   }

@@ -14,7 +14,8 @@ import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import makeSelectAuth from './selectors';
 import reducer from './reducer';
-import saga from './saga';
+
+import { requestTokenStart } from './actions';
 
 import SignIn from 'components/SignIn';
 
@@ -23,10 +24,14 @@ export class Auth extends React.Component { // eslint-disable-line react/prefer-
     super(props);
   }
 
+  componentDidMount() {
+    this.props.requestTokenStart();
+  }
+
   render() {
     return (
       <div>
-        <SignIn {...props} />
+        <SignIn {...this.props} />
       </div>
     );
   }
@@ -43,16 +48,10 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    requestTokenStart: () => {
+      dispatch(requestTokenStart())
+    }
   };
 }
 
-const withConnect = connect(mapStateToProps, mapDispatchToProps);
-
-const withReducer = injectReducer({ key: 'auth', reducer });
-const withSaga = injectSaga({ key: 'auth', saga });
-
-export default compose(
-  withReducer,
-  withSaga,
-  withConnect,
-)(Auth);
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);

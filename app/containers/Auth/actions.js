@@ -10,6 +10,21 @@ import * as ActionTypes from './constants';
 /*====================================================
 =            login Action creator            =
 ====================================================*/
+export function requestTokenStart() {
+  return {
+    type:ActionTypes.REQUEST_TOKEN_START
+  }
+}
+
+function requestTokenSuccess(token) {
+  return {
+    type:'',
+    token
+  }
+}
+
+// https://www.flickr.com/services/oauth/authorize?oauth_token=72157626737672178-022bbd2f4c2f3432
+
 
 function requestLogin(creds) {
   return {

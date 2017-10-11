@@ -8,6 +8,7 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
 import mainReducer from 'containers/Main/reducer';
+import authReducer from 'containers/Auth/reducer';
 /*
  * routeReducer
  *
@@ -44,6 +45,7 @@ export default function createReducer(injectedReducers) {
     route: routeReducer,
     language: languageProviderReducer,
     main: mainReducer,
+    auth: authReducer,
     ...injectedReducers,
   });
 }

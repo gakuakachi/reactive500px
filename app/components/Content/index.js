@@ -21,7 +21,7 @@ class Content extends React.Component { // eslint-disable-line react/prefer-stat
   render() {
     const { images } = this.props;
     const imageItems = Object.keys(images).map((value, key) => {
-      return <img src={images[value].image_url} />
+      return <img key={key} src={images[value].image_url} />
     });
     return (
       <Div>

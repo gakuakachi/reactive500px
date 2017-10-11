@@ -22,12 +22,12 @@ function authReducer(state = initialState, action) {
     case ActionTypes.LOGIN_SUCCESS:
       return state.merge({
         isFetching: false,
-        isAuthenticated: true;
+        isAuthenticated: true
       });
     case ActionTypes.LOGIN_FAILURE:
       return state.merge({
         isFetching: false,
-        isAuthenticated: false;
+        isAuthenticated: false
       });
     //logout reducer
     case ActionTypes.LOGOUT_REQUEST:
@@ -35,12 +35,12 @@ function authReducer(state = initialState, action) {
     case ActionTypes.LOGOUT_SUCCESS:
       return state.merge({
         isFetching: false,
-        isAuthenticated: false;
+        isAuthenticated: false
       });
     case ActionTypes.LOGOUT_FAILURE:
       return state.merge({
         isFetching: false,
-        isAuthenticated: true;
+        isAuthenticated: true
       });
     default:
       return state;

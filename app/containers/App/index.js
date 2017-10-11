@@ -16,6 +16,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
 import Main from 'containers/Main/Loadable'
+import Auth from 'containers/Auth/Loadable'
 import Upload from 'containers/Upload';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
@@ -25,6 +26,7 @@ export default function App() {
     <div>
       <Switch>
         <Route exact path="/" component={Main} />
+        <Route exact path="/login" component={Auth} />
         <Route exact path="/featured/popular" component={Main} />
         <Route exact path="/featured/rated" component={Main} />
         <Route exact path="/featured/upcoming" component={Main} />
